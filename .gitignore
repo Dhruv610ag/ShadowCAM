@@ -1,0 +1,5 @@
+/.mypy_cache
+/.vscode
+/images folder
+/__pycache__
+/yolov8m-seg.pt

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Broadcaster</title>
+    <link rel="stylesheet" href="./static/style.css">
+</head>
+<body>
+    <div class="container">
+        <img class="logo" src="./static/logo_image.png" alt="Rendering">
+        <h1 style="color: black;">Virtual Camera Controller</h1>
+        <div class="controls">
+            <div class="button">
+                <button onclick="getDevices()">List Devices</button>
+                <button onclick="startStream()">Start Streaming</button>
+                <button onclick="stopStream()">Stop Streaming</button>
+            </div>
+            <div class="inputs">
+                <label for="camera">Choose Camera</label>
+                <select id="camera"></select>
+    
+                <label for="fps">FPS</label>
+                <input id="fps" type="number" min="1" max="60" value="15" />
+    
+                <label for="blur">Blur Strength Number</label>
+                <input id="blur" type="range" min="1" max="52" value="10" />
+    
+                <label for="background">Background</label>
+                <select id="background">
+                    <option value="none">No Background</option>
+                    <option value="blur">Blur</option>
+                    <option value="default">Default</option>
+                </select>
+            </div>
+        </div> 
+        <div id="status">Status : Waiting for the action ...</div>
+    </div>
+    <script>
+        function getDevices() {
+            fetch('/devices')
+                .then(response => response.json())
+                .then(data => {
+                    const select = document.getElementById('camera');
+                    select.innerHTML = '';
+                    data.forEach(device => {
+                        select.innerHTML += `<option value="${device.id}">${device.name}</option>`;
+                    });
+                });
+        }
+    
+        function startStream() {
+            const source = document.getElementById('camera').value;
+            const fps = document.getElementById('fps').value;
+            const blur = document.getElementById('blur').value;
+            const background = document.getElementById('background').value;
+    
+            fetch(`/start?source=${source}&fps=${fps}&blur_strength=${blur}&background=${background}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerHTML = data.message;
+                });
+        }
+    
+        function stopStream() {
+            fetch('/stop')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('status').innerHTML = data.message;
+                });
+        }
+    </script>
+    </body>
+</html>

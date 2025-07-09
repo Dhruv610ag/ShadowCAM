@@ -1,0 +1,12 @@
+step1 : conda create -n broadcaster_live python=3.11
+
+step2 : conda activate broadcaster_live
+
+(i am CPU user so i have installed this library)
+step3 : pip3 install pytorch torchvision
+
+step4 : pip install -r requirements.txt
+
+step6 : import torch
+
+step7 : print(torch.cuda.is_available())

@@ -1,0 +1,103 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0%;
+    padding: 0%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+    background: url("wallpaper.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.container {
+    width: 50%;
+    max-width: 1000px;
+    height: auto;
+    padding: 60px 20px 20px 100px;
+    border-radius: 10px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+                0 6px 6px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    
+    /* ✅ Combined background here */
+    background: linear-gradient(rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.6)),
+                url("wallpaper.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+.controls {
+    display: flex;
+    justify-content: center;      /* Center both sections */
+    align-items: flex-start;
+    gap: 200px;                    /* Add controlled spacing between panels */
+    margin: 40px 0;
+}
+.button, .inputs{
+    text-decoration-color: black;
+    width: 200px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100px;
+    height: auto;
+    z-index: 10;
+    border: 2px solid #333;      /* Add this line */
+    border-radius: 6px;          /* Optional: smooth corners */
+    background-color: #fff;      /* Optional: adds background padding */
+    padding: 4px;   
+}
+button{
+    padding: 10px 20px;
+    border: none;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+select,input[type=range],input[type=number]{
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+input[type=range]{
+    accent-color: #007bff;
+}
+button:hover{
+    background: #0056b3;
+}
+h1 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px #aaa;
+}
+#status {
+    margin-top: 30px;
+    padding: 12px 20px;
+    font-weight: 500;
+    background-color: #f5f5f5;
+    color: #333;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease-in-out;
+}
+select:hover,
+input[type=range]:hover,
+input[type=number]:hover {
+    border-color: #1779e2;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+label {
+    font-weight: bold;
+    color: #222;
+    text-align: left;
+}
